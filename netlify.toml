@@ -2,6 +2,14 @@
   command = "npm run build"
   publish = ".next"
   functions = "netlify/functions"
-
+  
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  # Set NODE_ENV to production to avoid caching issues
+  NODE_ENV = "production"
+
+[build]
+  # Disable caching for Prisma's client generation directory
+  cache = false
