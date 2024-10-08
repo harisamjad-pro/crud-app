@@ -1,15 +1,13 @@
 [build]
-  command = "npm run build"
-  publish = ".next"
-  functions = "netlify/functions"
-  
+  command = "npm run build"             # Command to build your app
+  publish = ".next"                      # Directory to publish after the build
+  functions = "netlify/functions"        # Directory for serverless functions (optional)
+
 [[plugins]]
-  package = "@netlify/plugin-nextjs"
+  package = "@netlify/plugin-nextjs"    # Next.js adapter for Netlify
 
 [build.environment]
-  # Set NODE_ENV to production to avoid caching issues
-  NODE_ENV = "production"
+  NODE_ENV = "production"                # Set environment to production
 
-[build]
-  # Disable caching for Prisma's client generation directory
-  cache = false
+[cache]
+  paths = ["node_modules/.prisma/client"] # Caching settings (optional)
